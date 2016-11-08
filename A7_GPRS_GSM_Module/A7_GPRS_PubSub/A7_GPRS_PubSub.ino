@@ -5,7 +5,7 @@
 A7Client a7Client (7, 8); // RX, TX on Uno, connected to Tx, Rx of A7 Module
 PubSubClient client(a7Client);
 
-char server[] = "broker.hivemq.com";
+char server[] = "iot.eclipse.org";
 uint8_t message[]={0x0F,0x0C,0x02,0x41,0x42,0x00,0x48,0x65,0x6C,0x6C,0x6F,0x57,0x6F,0x72,0x6C,0x64};
 //char buffer[512];
 
@@ -25,7 +25,7 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if (client.connect("arduinoClient")) {
+    if (client.connect("arduinoClientabcd5569")) {
       Serial.println("connected");
       // Once connected, publish an announcement...
       client.publish("AB", "hello world");
@@ -51,7 +51,8 @@ void setup() {
   //  }
   client.setServer(server, 1883);
   client.setCallback(callback);
-  client.connect("a");
+  Serial.println(client.connect("abhjtid"));
+  Serial.println(F("Out"));
   client.publish("AB", "hello world");
 //  a7Client.write(message, 16);
   
